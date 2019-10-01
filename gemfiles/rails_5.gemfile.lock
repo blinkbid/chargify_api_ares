@@ -2,7 +2,7 @@ PATH
   remote: ..
   specs:
     chargify_api_ares (1.4.15)
-      activeresource (>= 3.2.16)
+      activeresource
 
 GEM
   remote: https://rubygems.org/
@@ -153,7 +153,7 @@ DEPENDENCIES
   rails (~> 5.0.7)
   rake (~> 10.0.3)
   rspec (~> 2.12.0)
-  vcr
+  vcr (~> 2.9.3)
 
 BUNDLED WITH
    1.16.6
