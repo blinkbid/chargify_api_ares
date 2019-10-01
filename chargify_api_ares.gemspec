@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('fakeweb', '~> 1.3.0')
   s.add_development_dependency('faker', '~> 1.1.2')
   s.add_development_dependency('pry')
-  s.add_development_dependency('vcr')
+  s.add_development_dependency('vcr', '~> 2.9.3')
   s.add_development_dependency('dotenv')
   s.add_development_dependency('appraisal')
 end
