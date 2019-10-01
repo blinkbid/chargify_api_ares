@@ -22,3 +22,4 @@ gemfile:
   - gemfiles/rails_4.gemfile
   - gemfiles/rails_4.1.gemfile
   - gemfiles/rails_5.gemfile
+  - gemfiles/rails_5.1.gemfile

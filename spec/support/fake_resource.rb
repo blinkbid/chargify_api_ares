@@ -38,7 +38,9 @@ module ActiveResource
           save_without_fake_resource
         end
       end
-      alias_method_chain :save, :fake_resource
+
+      alias_method :save_without_fake_resource, :save
+      alias_method :save, :save_with_fake_resource
 
       def destroy_with_fake_resource
         if @@enabled
@@ -48,7 +50,9 @@ module ActiveResource
           destroy_without_fake_resource
         end
       end
-      alias_method_chain :destroy, :fake_resource
+
+      alias_method :destroy_without_fake_resource, :destroy
+      alias_method :destroy, :destroy_with_fake_resource
 
       def self.delete(id, options = {})
         if @@enabled
