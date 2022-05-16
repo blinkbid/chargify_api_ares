@@ -9,7 +9,7 @@ describe Chargify::ProductFamily, :fake_resource do
     end
     
     it "returns a product family" do
-      Chargify::ProductFamily.find_by_handle('farming').should == product_family
+      expect(Chargify::ProductFamily.find_by_handle('farming')).to eql product_family
     end
   end
 
@@ -23,7 +23,7 @@ describe Chargify::ProductFamily, :fake_resource do
     end
     
     it "returns the products belonging to the product family" do
-      product_family.products.should =~ [product_1, product_2]
+      expect(product_family.products).to match_array [product_1, product_2]
     end
   end
 
@@ -37,7 +37,7 @@ describe Chargify::ProductFamily, :fake_resource do
     end
     
     it "returns the coupons belonging to the product family" do
-      product_family.coupons.should =~ [coupon_1, coupon_2]
+      expect(product_family.coupons).to match_array [coupon_1, coupon_2]
     end
   end
   
@@ -51,7 +51,7 @@ describe Chargify::ProductFamily, :fake_resource do
     end
     
     it "returns the components belonging to the product family" do
-      product_family.components.should =~ [component_1, component_2]
+      expect(product_family.components).to match_array [component_1, component_2]
     end
   end
 end

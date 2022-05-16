@@ -6,7 +6,7 @@ module ActiveResource
   # and stores the resources internally instead of sending to a remote service and responds these resources back on
   # request.
   #
-  # Additionally it adds a save! method and can be used in conjunction with Cucumber/Pickle/FactoryGirl to fully
+  # Additionally it adds a save! method and can be used in conjunction with Cucumber/Pickle/FactoryBot to fully
   # fake a back end service in the BDD cycle
   #
   module FakeResource

@@ -11,17 +11,17 @@ describe Chargify::Product, :fake_resource do
 
     it 'finds the correct product by handle' do
       product = Chargify::Product.find_by_handle('green-money')
-      product.should == existing_product
+      expect(product).to eql existing_product
     end
     
     it 'is an instance of Chargify::Product' do
       product = Chargify::Product.find_by_handle('green-money')
-      product.should be_instance_of(Chargify::Product)
+      expect(product).to be_instance_of(Chargify::Product)
     end  
 
     it 'is marked as persisted' do
       product = Chargify::Product.find_by_handle('green-money')
-      product.persisted?.should == true
+      expect(product.persisted?).to be_truthy
     end
   end
 

@@ -10,17 +10,17 @@ describe Chargify::Customer, :fake_resource do
 
     it 'finds the correct customer by reference' do
       customer = Chargify::Customer.find_by_reference('sigma')
-      customer.should == existing_customer
+      expect(customer).to eql(existing_customer)
     end
 
     it 'is an instance of Chargify::Customer' do
       customer = Chargify::Customer.find_by_reference('sigma')
-      customer.should be_instance_of(Chargify::Customer)
+      expect(customer).to be_instance_of(Chargify::Customer)
     end
 
     it 'is marked as persisted' do
       customer = Chargify::Customer.find_by_reference('sigma')
-      customer.persisted?.should == true
+      expect(customer.persisted?).to be_truthy
     end
   end
 
@@ -34,7 +34,7 @@ describe Chargify::Customer, :fake_resource do
     end
 
     it "returns the subscriptions belonging to the customer" do
-      customer.subscriptions.should =~ [subscription_1, subscription_2]
+      expect(customer.subscriptions).to match_array [subscription_1, subscription_2]
     end
   end
 

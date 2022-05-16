@@ -7,7 +7,7 @@ describe Chargify::CustomerMetadata do
   end
 
   describe "#inspect" do
-    its(:inspect) { should eql("#<Chargify::CustomerMetadata resource_id: nil, current_name: nil, name: nil, value: nil>") }
+    subject { described_class.new.inspect }
+    it { should eql("#<Chargify::CustomerMetadata resource_id: nil, current_name: nil, name: nil, value: nil>") }
   end
-
 end

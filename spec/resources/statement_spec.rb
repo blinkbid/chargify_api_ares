@@ -9,7 +9,7 @@ describe Chargify::Statement, :fake_resource do
 
     it 'downloads pdf statement' do
       pdf = Chargify::Statement.find_pdf(1)
-      pdf.should == 'fake_pdf'
+      expect(pdf).to eql 'fake_pdf'
     end
   end
 

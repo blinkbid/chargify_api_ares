@@ -9,7 +9,7 @@ describe Chargify::Invoice, :fake_resource do
 
     it 'downloads pdf statement' do
       pdf = Chargify::Invoice.find_pdf(1)
-      pdf.should == 'fake_pdf'
+      expect(pdf).to eql 'fake_pdf'
     end
   end
 
@@ -122,6 +122,6 @@ describe Chargify::Invoice, '#payment', :fake_resource do
 
   it 'creates payment' do
     payment = invoice.payment(:amount_in_cents => 10000, :memo => 'lorem ipsum')
-    payment.amount_in_cents.should == 10000
+    expect(payment.amount_in_cents).to eql 10000
   end
 end

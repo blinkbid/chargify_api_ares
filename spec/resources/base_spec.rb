@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Chargify::Base do
 
   it 'parses element names' do
-    Chargify::Base.stub!(:name).and_return("Test::Namespace::ElementName")
-    Chargify::Base.element_name.should eql('element_name')
+    allow(Chargify::Base).to receive(:name).and_return("Test::Namespace::ElementName")
+    expect(Chargify::Base.element_name).to eql('element_name')
   end
 
   context 'configuration changes' do

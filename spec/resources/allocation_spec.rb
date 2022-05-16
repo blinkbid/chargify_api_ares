@@ -105,7 +105,7 @@ describe Chargify::Allocation do
       end
 
       Chargify::Allocation.with_json_format(&block)
-      expect(ran).to be_true
+      expect(ran).to be_truthy
       expect(block_format).to be_an ActiveResource::Formats[:json]
       expect(Chargify::Allocation.connection.format).to be_an ActiveResource::Formats[:xml]
     end

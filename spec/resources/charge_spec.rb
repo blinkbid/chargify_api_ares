@@ -11,7 +11,7 @@ describe Chargify::Charge, :fake_resource do
     
       response = Chargify::Charge.create(:subscription_id => subscription.id, :amount => "10.00", :memo => "one-time charge")
     
-      expect(response.valid?).to be_true
+      expect(response.valid?).to be_truthy
       expect(response).to be_a(Chargify::Charge)
     end
   end

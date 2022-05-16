@@ -52,12 +52,12 @@ describe Chargify::Subscription::Component, :fake_resource do
     end
 
     it "returns the subscription's component resource from Chargify::Subscription::Component.find(1, :params => {:subscription_id => 1})" do
-      Chargify::Subscription::Component.find(@sc1.component_id, :params => {:subscription_id => @subscription.id}).should == @sc1
+      expect(Chargify::Subscription::Component.find(@sc1.component_id, :params => {:subscription_id => @subscription.id})).to eql @sc1
     end
 
     it "returns the subscription's component resource from Chargify::Subscription.find(1).component(1)" do
       subscription = Chargify::Subscription.find(@subscription.id)
-      subscription.component(@sc1.component_id).should == @sc1
+      expect(subscription.component(@sc1.component_id)).to eql @sc1
     end
   end
 
@@ -80,9 +80,9 @@ describe Chargify::Subscription::Component, :fake_resource do
       component.allocated_quantity = @new_allocated_quantity
 
       result = component.save
-      result.should be_true
+      expect(result).to be_truthy
 
-      Chargify::Subscription::Component.find(@sc1.component_id, :params => {:subscription_id => @subscription.id}).should == @sc1_prime
+      expect(Chargify::Subscription::Component.find(@sc1.component_id, :params => {:subscription_id => @subscription.id})).to eql @sc1_prime
     end
   end
 end

@@ -7,13 +7,13 @@ describe Chargify::ProductFamily::Component do
     let(:response) { double('response').as_null_object }
 
     before :each do
-      component.any_instance.stub(:connection).and_return(connection)
-      response.stub(:tap)
+      allow_any_instance_of(component).to receive(:connection).and_return(connection)
+      allow(response).to receive(:tap)
     end
 
     it 'should post to the correct url' do
-      connection.should_receive(:post) do |path, body, headers|
-        path.should == '/product_families/123/quantity_based_components.xml'
+      expect(connection).to receive(:post) do |path, body, headers|
+        expect(path).to eql '/product_families/123/quantity_based_components.xml'
 
         response
       end
@@ -22,8 +22,8 @@ describe Chargify::ProductFamily::Component do
     end
 
     it 'should not include the kind attribute in the post' do
-      connection.should_receive(:post) do |path, body, headers|
-        body.should_not match(/kind/)
+      expect(connection).to receive(:post) do |path, body, headers|
+        expect(body).to_not match(/kind/)
 
         response
       end
@@ -32,9 +32,9 @@ describe Chargify::ProductFamily::Component do
     end
 
     it 'should have the component kind as the root' do
-      connection.should_receive(:post) do |path, body, headers|
+      expect(connection).to receive(:post) do |path, body, headers|
         #The second line in the xml should be the root.  This saves us from using nokogiri for this one example.
-        body.split($/)[1].should match(/quantity_based_component/)
+        expect(body.split($/)[1]).to match(/quantity_based_component/)
 
         response
       end

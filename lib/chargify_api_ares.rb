@@ -30,11 +30,3 @@ require 'chargify_api_ares/resources/invoice'
 require 'chargify_api_ares/resources/customer_metafield'
 require 'chargify_api_ares/resources/subscription_metafield'
 require 'chargify_api_ares/resources/allocation'
-
-require 'active_resource/version'
-if defined?(::ActiveResource::VERSION::MAJOR) &&
-      ::ActiveResource::VERSION::MAJOR == 3 &&
-      ::ActiveResource::VERSION::MINOR == 0 &&
-      ::ActiveResource::VERSION::TINY < 20
-  require 'patches/activemodel_3_0_patch.rb'
-end

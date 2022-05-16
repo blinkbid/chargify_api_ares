@@ -5,7 +5,7 @@ describe Chargify::Renewal::Preview, :fake_resource do
     it 'creates a renewal preview' do
       id = generate(:subscription_id)
       subscription = build(:subscription, :id => id)
-      subscription.stub!(:persisted?).and_return(true)
+      allow(subscription).to receive(:persisted?).and_return(true)
       expected_response = {
         :renewal_preview => {
           :next_assessment_at => DateTime.parse("2014-04-04T01:00:00-04:00"),
@@ -32,8 +32,8 @@ describe Chargify::Renewal::Preview, :fake_resource do
 
       response = Chargify::Renewal::Preview.create(:subscription_id => subscription.id)
 
-      expect(response.valid?).to be_true
-      expect(response.errors.any?).to be_false
+      expect(response.valid?).to be_truthy
+      expect(response.errors.any?).to be_falsy
       expect(response).to be_a(Chargify::Renewal::Preview)
     end
   end

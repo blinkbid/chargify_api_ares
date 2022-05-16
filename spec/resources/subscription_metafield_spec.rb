@@ -6,7 +6,8 @@ describe Chargify::SubscriptionMetafield do
   end
 
   describe '#inspect' do
-    its(:inspect) { should eql('#<Chargify::SubscriptionMetafield current_name: nil, name: nil>') }
+    subject { described_class.new.inspect }
+    it { should eql('#<Chargify::SubscriptionMetafield current_name: nil, name: nil>') }
   end
 
   describe '#on_csv_export?' do

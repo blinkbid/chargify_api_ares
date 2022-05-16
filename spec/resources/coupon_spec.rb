@@ -9,17 +9,17 @@ describe Chargify::Coupon, :fake_resource do
     end
     
     it "finds the correct coupon by product family and code" do
-      Chargify::Coupon.find_by_product_family_id_and_code(10, '20OFF').should == existing_coupon
+      expect(Chargify::Coupon.find_by_product_family_id_and_code(10, '20OFF')).to eql(existing_coupon)
     end
     
     it "is an instance of Chargify::Coupon" do
       coupon = Chargify::Coupon.find_by_product_family_id_and_code(10, '20OFF')
-      coupon.should be_instance_of(Chargify::Coupon)
+      expect(coupon).to be_instance_of(Chargify::Coupon)
     end
 
     it 'is marked as persisted' do
       coupon = Chargify::Coupon.find_by_product_family_id_and_code(10, '20OFF')
-      coupon.persisted?.should == true
+      expect(coupon.persisted?).to be_truthy
     end
   end
   
@@ -33,8 +33,10 @@ describe Chargify::Coupon, :fake_resource do
     
     it "returns all of the coupons for a product family" do
       coupons = Chargify::Coupon.find_all_by_product_family_id(5)
-      coupons.count.should == 2
-      coupons.map{|c| c.should be_instance_of(Chargify::Coupon)}
+      expect(coupons.count).to eql(2)
+      coupons.each do |c|
+        expect(c).to be_instance_of(Chargify::Coupon)
+      end
     end
   end
 
@@ -48,12 +50,12 @@ describe Chargify::Coupon, :fake_resource do
 
     it 'returns the coupon that matches the coupon code' do
       coupon = Chargify::Coupon.validate(:product_family_id => 6, :coupon_code => 'foobar123')
-      coupon.should be_instance_of Chargify::Coupon
+      expect(coupon).to be_instance_of Chargify::Coupon
     end
 
     it 'treats the product_family_id as an optional parameter' do
       coupon = Chargify::Coupon.validate(:coupon_code => 'foobar123')
-      coupon.should be_instance_of Chargify::Coupon
+      expect(coupon).to be_instance_of Chargify::Coupon
     end
 
     it 'treats the coupon_code as a required parameter' do

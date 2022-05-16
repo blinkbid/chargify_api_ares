@@ -17,8 +17,8 @@ describe Chargify::Usage, :fake_resource do
       u.save
       
       usage = Chargify::Usage.find(:last, :params => {:subscription_id => @subscription.id, :component_id => @component.id})
-      usage.memo.should == @now
-      usage.quantity.should == 5
+      expect(usage.memo).to eql @now
+      expect(usage.quantity).to eql 5
     end
   end
   
@@ -38,7 +38,7 @@ describe Chargify::Usage, :fake_resource do
       u.save
       
       usage = Chargify::Usage.find(:last, :params => {:subscription_id => @subscription.id, :component_id => @component.id})
-      usage.quantity.should == 5
+      expect(usage.quantity).to eql 5
     end
   end
 end
