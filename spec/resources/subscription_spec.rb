@@ -70,7 +70,7 @@ describe Chargify::Subscription, :fake_resource do
 
   it 'creates a one-time charge' do
     id = generate(:subscription_id)
-    subscription = build(:subscription, id:)
+    subscription = build(:subscription, id: id)
     allow(subscription).to receive(:persisted?).and_return(true)
     expected_response = { charge: { amount_in_cents: 1000, memo: 'one-time charge', success: true } }.to_xml
     FakeWeb.register_uri(:post, "#{test_domain}/subscriptions/#{id}/charges.xml", status: 201,
@@ -105,7 +105,7 @@ describe Chargify::Subscription, :fake_resource do
 
   it 'migrates the subscription' do
     id = generate(:subscription_id)
-    subscription = build(:subscription, id:)
+    subscription = build(:subscription, id: id)
     allow(subscription).to receive(:persisted?).and_return(true)
     expected_response = [subscription.attributes].to_xml(root: 'subscription')
     FakeWeb.register_uri(:post,
@@ -171,7 +171,7 @@ describe Chargify::Subscription, :fake_resource do
     let(:statement_id) { 1234 }
     let(:subscription_id) { 4242 }
     let(:statement) do
-      { id: statement_id, subscription_id: }
+      { id: statement_id, subscription_id: subscription_id }
     end
 
     before do
@@ -225,7 +225,7 @@ describe Chargify::Subscription, :fake_resource do
     let(:invoice_id) { 1234 }
     let(:subscription_id) { 4242 }
     let(:invoice) do
-      { id: invoice_id, subscription_id: }
+      { id: invoice_id, subscription_id: subscription_id }
     end
 
     before do
