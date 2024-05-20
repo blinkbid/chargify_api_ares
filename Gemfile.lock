@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    chargify_api_ares (1.4.16)
+    chargify_api_ares (1.4.17)
       activeresource
 
 GEM
@@ -13,7 +13,7 @@ GEM
       activemodel (> 5.x)
       activesupport (> 5.x)
       builder (~> 3.1)
-    activeresource (6.0.0)
+    activeresource (6.1.0)
       activemodel (>= 6.0)
       activemodel-serializers-xml (~> 1.0)
       activesupport (>= 6.0)
